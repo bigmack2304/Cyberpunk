@@ -50,7 +50,6 @@ const animate_elements = [
 load_smooth_appearance();
 
 async function load_smooth_appearance() {
-    debugger;
     if ((media_is_mobile() || media_is_tablet()) && is_touch_enabled()) return; // на мобильном устройстве такой функционал не нужен
 
     let { main } = await import("../my_libs/smooth_appearance");
