@@ -24,13 +24,13 @@ jobs:
         run: npm run build_dev
 
       - name: Create folder 
-        run: 'mkdir --parents build/dev'
+        run: 'mkdir --parents build_dev/dev'
 
       - name: Create dev Artifacts 
         uses: actions/upload-artifact@v1
         with:
           name: dev
-          path: build
+          path: build_dev
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
@@ -38,4 +38,4 @@ jobs:
           branch: gh-page-preview
           clean: true
           folder: build
-          target-folder: build
+          target-folder: build_dev
