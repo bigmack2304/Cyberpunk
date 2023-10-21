@@ -1,0 +1,26 @@
+@import url(./../constants.less);
+
+// блок, бредназначен для расположения внутри body_inner, занимает всю доступную ширину страницы
+// создан для задания цвета фона каждому типу контента.
+
+.content_outer {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+
+    &--white {
+        background-color: white;
+    }
+
+    &--black {
+        background-color: black;
+    }
+
+    &--yellow {
+        background-color: @yellow_color;
+    }
+
+    &--index_setting_1 {
+        padding-top: 70px;
+    }
+}

@@ -1,0 +1,7 @@
+<svg height="0" width="0">
+  <defs>
+    <clipPath id="path"  clipPathUnits="objectBoundingBox">
+	<path d="M320 0H49L0 50V207H270L320 157V0Z"/>
+    </clipPath>
+  </defs>
+</svg>

@@ -1,0 +1,48 @@
+@import url(./../constants.less);
+
+.mixin_noise_bg() {
+    background-image: url(./../../../img/images/noise.png);
+    width: 100%;
+    height: 70px;
+    will-change: transform; // у меня помогло убрать странные полосы сверху\снизу
+    background-repeat: repeat-x;
+}
+
+// верхний шум /////////////////////////////////////////////////////////////////////
+
+[class*="noise_wrapper--top"] {
+    &::before {
+        content: "";
+        display: block;
+        .mixin_noise_bg();
+    }
+}
+
+[class*="noise_wrapper--top--bg_white"] {
+    &::before {
+        background-color: white;
+    }
+}
+
+// нижний шум /////////////////////////////////////////////////////////////////////
+
+[class*="noise_wrapper--bottom"] {
+    &::after {
+        content: "";
+        display: block;
+        .mixin_noise_bg();
+        transform: rotateZ(180deg);
+    }
+}
+
+[class*="noise_wrapper--bottom--bg_yellow"] {
+    &::after {
+        background-color: @yellow_color;
+    }
+}
+
+/////////////////////////////////////////////////////////////////////
+
+.noise_wrapper {
+    will-change: transform; // у меня помогло убрать странные полосы сверху\снизу
+}
