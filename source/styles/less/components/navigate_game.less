@@ -1,0 +1,31 @@
+@import url(./../constants.less);
+
+.navigate_game {
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    .media_is_desctop({
+ 
+    });
+
+    .media_is_tablet({
+ 
+    });
+
+    .media_is_mobile({
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    });
+}
+
+@container (max-width: 445px) {
+    .navigate_game {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}

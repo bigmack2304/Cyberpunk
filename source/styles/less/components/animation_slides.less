@@ -1,0 +1,31 @@
+@import url(./../constants.less);
+@import url(./anims.less);
+
+.js-animation_slides {
+    position: relative;
+    overflow: hidden;
+
+    &__slide {
+        position: absolute;
+        opacity: 1;
+        transition: opacity linear 0.5s;
+        pointer-events: none;
+        object-fit: cover;
+
+        .media_is_desctop({
+            width: min(100%, @const_win_size_max);
+            height: clamp(713px, 100vh ,1000px);
+            .mixin_animate_zoom_in_out();
+        });
+
+        .media_is_tablet({
+            width: 100%;
+            height: clamp(713px, 100vh ,1000px);
+            .mixin_animate_zoom_in_out();
+        });
+
+        .media_is_mobile({
+            width: max(100%, @const_win_size_min);
+        });
+    }
+}

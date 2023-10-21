@@ -1,0 +1,28 @@
+@import url(./../constants.less);
+
+// блок, ограничивает максимальную ширину контента, а также позицианирует его по центру
+
+.content_inner {
+    padding: 20px 36px 20px 36px;
+    margin: 0 auto;
+    max-width: @const_content_size_max;
+
+    align-items: center;
+
+    &--black {
+        background-color: black;
+    }
+
+    .media_is_desctop({});
+
+    .media_for_inner_content({
+        padding: 20px 0px 20px 0px;
+    });
+
+    .media_is_tablet({
+    });
+
+    .media_is_mobile({
+        padding: 20px 12px 20px 12px;
+    });
+}

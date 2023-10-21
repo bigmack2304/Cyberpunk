@@ -1,0 +1,75 @@
+// минимальные разрешения для медиазапросов
+
+@const_content_size_max: 1280px; // максимальная ширина бля области с контентом
+
+@const_win_size_min: @const_win_size_mobile; // минимальная ширина body
+@const_win_size_max: @const_win_size_monitor; // максимальная ширина body
+
+@const_win_size_mobile: 320px;
+@const_win_size_tablet: 1024px;
+@const_win_size_monitor: 1920px;
+
+// медиа запросы будем использовать в виде миксинов, так будет более читаемо
+
+.media_is_desctop(@rules) {
+    @media (min-width: calc(@const_win_size_tablet + 1px)) {
+        @rules();
+    }
+}
+
+.media_is_tablet(@rules) {
+    @media (min-width: calc(@const_win_size_mobile + 1px)) and (max-width: @const_win_size_tablet) {
+        @rules();
+    }
+}
+
+.media_is_mobile(@rules) {
+    @media (min-width: 1px) and (max-width: @const_win_size_mobile) {
+        @rules();
+    }
+}
+
+.media_for_inner_content(@rules) {
+    @media (min-width: calc(@const_content_size_max + 36px)) {
+        @rules();
+    }
+}
+
+@yellow_color: #f8f200;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.AdaptiveFontPx(@minFontSizePx, @maxFontSizePx, @containerWidth: 1024) {
+    // 1024 это верхний предел ширины экрана для которой требуется адаптивный шрифт
+    // 320 это нижний предел ширины экрана для которой требуется адаптивный шрифт
+    @differenceSize: @maxFontSizePx - @minFontSizePx;
+    @differenceWidth: @containerWidth - 320;
+    font-size: calc((@minFontSizePx * 1px) + @differenceSize * ((100vw - 320px) / @differenceWidth));
+
+    // лучше указывать эти значения в ручную, для большей наглядности
+    // .media_is_desctop({
+    //     font-size: (@maxFontSizePx * 1px);
+    // });
+
+    // .media_is_mobile({
+    //     font-size: (@minFontSizePx * 1px);
+    // });
+}
+
+// .AdaptiveFontPx(30, 62);     // требуемый шрифт от 30px до 60px
+
+.AdaptiveWidthPx(@minWidthPx, @maxWidthPx) {
+    @differenceSize: @maxWidthPx - @minWidthPx;
+    @differenceWidth: 1024 - 320;
+    width: calc((@minWidthPx * 1px) + @differenceSize * ((100vw - 320px) / @differenceWidth));
+}
+
+.AdaptiveHeightPx(@minHeightPx, @maxHeightPx) {
+    @differenceSize: @maxHeightPx - @minHeightPx;
+    @differenceWidth: 1024 - 320;
+    height: calc((@minHeightPx * 1px) + @differenceSize * ((100vw - 320px) / @differenceWidth));
+}
+
+.CalcAspectRatio(@width, @height) {
+    aspect-ratio: (@width / @height * 9)/9;
+}

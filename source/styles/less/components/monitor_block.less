@@ -1,0 +1,228 @@
+@import url(./../constants.less);
+
+.monitor_block__wrapper {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    container-type: inline-size;
+    container-name: monitor_block__container;
+}
+
+.monitor_block {
+    overflow: hidden;
+    display: grid;
+    grid-template-areas:
+        "image          description"
+        "logotips       description";
+
+    .media_is_desctop({
+        column-gap: 32px;
+        grid-template-columns: 1fr 1fr;
+    });
+
+    .media_is_tablet({
+        column-gap: 32px;
+        grid-template-areas:
+        "image          description"
+        "logotips       description";
+    });
+
+    .media_is_mobile({
+        grid-template-areas:
+        "image"
+        "logotips"
+        "description";
+        });
+
+    &--wight_type_1 {
+        .media_is_mobile({
+                width: 44px;
+            });
+    }
+
+    &--wight_type_2 {
+        .media_is_desctop({
+            width: 320px;
+            height: 80px;
+        });
+
+        .media_is_tablet({
+                .AdaptiveWidthPx(175, 320);
+                .AdaptiveHeightPx(44, 80);
+
+                a {
+                    height: inherit;
+                }
+            });
+    }
+
+    &__image {
+        width: 100%;
+        grid-area: image;
+    }
+
+    &__logotips {
+        grid-area: logotips;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        column-gap: 14px;
+        align-items: center;
+        justify-content: center;
+
+        .media_is_desctop({
+            margin-top: 26px;
+        });
+
+        .media_is_tablet({
+            align-self: start;
+            margin-top: 25px;
+            flex-direction: column;
+            gap: 25px;
+        });
+
+        .media_is_mobile({
+                height: 44px;
+                margin-top: 25px;
+                margin-bottom: 40px;
+                flex-direction: row;
+            });
+
+        li {
+            list-style-type: none;
+
+            .media_is_mobile({
+                height: inherit;
+            });
+
+            a {
+                height: inherit;
+            }
+        }
+    }
+
+    &__logotip {
+        height: inherit;
+        object-fit: contain;
+    }
+
+    &__description {
+        grid-area: description;
+    }
+
+    &__h {
+        margin: 0;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        font-size: 62px;
+
+        .media_is_tablet({
+            .AdaptiveFontPx(30, 62);
+        });
+
+        .media_is_mobile({
+                font-size: 30px;
+            });
+    }
+
+    &__p {
+        margin: 0;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 34px;
+        font-size: 18px;
+        margin-top: 25px;
+
+        .media_is_desctop({
+     
+        });
+
+        .media_is_tablet({
+            .AdaptiveFontPx(16, 18);
+        });
+
+        .media_is_mobile({
+                margin-top: 25px;
+                font-size: 16px;
+                line-height: 32px;
+            });
+    }
+
+    &__monitor_dignities {
+        margin-top: 25px;
+
+        .media_is_tablet({
+            margin-top: 18px;
+        });
+
+        .media_is_mobile({
+                margin-top: 27px;
+        });
+    }
+
+    &__monitor_dignitie {
+        list-style-type: none;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+
+        .media_is_desctop({
+        });
+
+        .media_is_tablet({
+            .AdaptiveFontPx(16, 18);
+        });
+
+        .media_is_mobile({
+                font-size: 16px;
+        });
+    }
+
+    &__button {
+        font-family: Roboto;
+        margin-top: 40px;
+    }
+}
+
+@container monitor_block__container (max-width: 720px) {
+    .monitor_block {
+        .media_is_tablet({
+            column-gap: 0px;
+            row-gap:32px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas:
+            "image          logotips"
+            "description    description";
+        });
+
+        &__logotips {
+            .media_is_tablet({
+                margin-top: 0;
+            });
+        }
+    }
+}
+
+@container monitor_block__container (max-width: 400px) {
+    .monitor_block {
+        .media_is_tablet({
+            grid-template-columns: auto;
+            grid-template-areas:
+            "image"
+            "logotips"
+            "description";
+        });
+
+        &__image {
+        }
+
+        &__logotips {
+            .media_is_tablet({
+                flex-direction: row;
+            });
+        }
+    }
+}

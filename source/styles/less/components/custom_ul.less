@@ -1,0 +1,45 @@
+@import url(./../constants.less);
+
+.custom_ul {
+    margin: 0;
+    padding: 0;
+
+    &__li {
+        display: flex;
+        align-items: flex-start;
+
+        &:not(:first-of-type) {
+            margin-top: 15px;
+        }
+
+        .media_is_desctop({
+            align-items: center;
+            gap: 10px;
+        });
+
+        .media_is_tablet({
+            align-items: center;
+            gap: 10px;
+        });
+
+        .media_is_mobile({
+                gap: 18px;
+        });
+    }
+
+    &__icon {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+
+        .media_is_mobile({
+            width: 24px;
+            height: 24px;
+        });
+    }
+
+    &__icon--yellow {
+        fill: @yellow_color;
+    }
+}

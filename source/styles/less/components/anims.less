@@ -1,0 +1,54 @@
+// плавный зум
+
+@keyframes zoom_in_out {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.mixin_animate_zoom_in_out() {
+    animation-name: zoom_in_out;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+// анимации для smooth_appearance.js
+
+// появление с лева
+.smooth_appearance_left_main {
+    transition: all ease-in-out 0.5s;
+}
+
+.smooth_appearance_left_out {
+    opacity: 0%;
+    transform: translateX(-100px);
+}
+
+// появление с права
+.smooth_appearance_right_main {
+    transition: all ease-in-out 0.5s;
+}
+
+.smooth_appearance_right_out {
+    opacity: 0%;
+    transform: translateX(100px);
+}
+
+// появление с снизу
+.smooth_appearance_bottom_main {
+    transition: all ease-in-out 0.5s;
+}
+
+.smooth_appearance_bottom_out {
+    opacity: 0%;
+    transform: translateY(100px);
+}

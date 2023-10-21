@@ -1,0 +1,92 @@
+@import url(./constants.less);
+
+@font-face {
+    font-family: "Archangelsk";
+    src: url(./../fonts/Archangelsk/Archangelsk.ttf);
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url(./../fonts/Roboto/Roboto.ttf);
+}
+
+picture {
+    display: contents;
+
+    & > source {
+        display: contents;
+    }
+}
+
+.blue_text {
+    color: #52bedc;
+    font-weight: 700;
+}
+
+.visually_hidden {
+    // скрывает блок вместе с содержимим (но при этом он доступен)
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    font-family: inherit;
+    // box-shadow: inset 0px 0px 0px 1px red;
+}
+
+html {
+    box-sizing: border-box;
+
+    font-size: 16px;
+}
+
+body {
+    min-width: @const_win_size_min;
+    background-color: black;
+    font-family: Archangelsk;
+}
+
+.debug {
+    box-shadow: inset 0px 0px 1px red;
+}
+
+.pointer_none {
+    pointer-events: none;
+}
+
+.cursor_no {
+    cursor: no-drop;
+}
+
+.js-disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* скроллбар */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: black;
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+    background-color: @yellow_color;
+    box-shadow: 2px 0px 3px inset rgb(0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    box-shadow: 2px 0px 3px inset rgb(0, 0, 0);
+}

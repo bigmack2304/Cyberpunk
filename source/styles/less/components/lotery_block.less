@@ -1,0 +1,197 @@
+@import url(./../constants.less);
+
+.lotery_block__text() {
+    color: white;
+    line-height: normal;
+    font-style: normal;
+    font-weight: 400;
+}
+
+// grid-template-areas:
+// "img1 img2"
+// "img3 img3"
+// "img3 img3";
+
+// grid-area: img2;
+
+.lotery_block_container {
+    container-type: inline-size;
+    container-name: lotery_block_container;
+}
+
+.lotery_block {
+    position: relative;
+    display: grid;
+    align-items: start;
+    overflow: hidden;
+
+    .media_is_desctop({
+        padding-top: 15px;
+        padding-bottom: 70px;
+        column-gap: 32px;
+        grid-template-areas:
+        "lotery_block__h        lotery_block__h"
+        "lotery_block__p        lotery_block__p"
+        "lotery_block__form     lotery_block__image";
+    });
+
+    .media_is_tablet({
+        column-gap: 32px;
+        padding-top: 15px;
+        padding-bottom: 70px;
+        grid-template-areas:
+        "lotery_block__icon     lotery_block__image"
+        "lotery_block__h        lotery_block__image"
+        "lotery_block__p        lotery_block__image"
+        "lotery_block__form     lotery_block__image";
+    });
+
+    .media_is_mobile({
+        padding-top: 6px;
+        padding-bottom: 70px;
+        grid-template-areas:
+        "lotery_block__image"
+        "lotery_block__h"
+        "lotery_block__p"
+        "lotery_block__form";
+    });
+
+    &__discount_icon {
+        height: 132px;
+        width: 132px;
+        grid-area: lotery_block__icon;
+
+        .media_is_desctop({
+            grid-area: initial;
+            position: absolute;
+            top: 15px;
+            left: 20px;
+
+            .media_for_inner_content({
+                left: 0px;
+            });
+        });
+
+        .media_is_tablet({
+            .AdaptiveWidthPx(62, 132);
+            .AdaptiveHeightPx(62, 132);
+        });
+
+        .media_is_mobile({
+            grid-area: initial;
+            position: absolute;
+            top: 6px;
+            left: 12px;
+            height: 62px;
+            width: 62px;
+        });
+    }
+
+    &__h {
+        .lotery_block__text();
+        font-size: 62px;
+        margin: 0;
+        grid-area: lotery_block__h;
+
+        .media_is_desctop({
+            margin-left: 160px;
+            margin-top: 56px;
+        });
+
+        .media_is_tablet({
+            .AdaptiveFontPx(30, 62);
+             max-width: 460px;
+        });
+
+        .media_is_mobile({
+            font-size: 30px;
+            margin: 25px 0;
+        });
+    }
+
+    &__p {
+        .lotery_block__text();
+        font-family: Roboto;
+        font-size: 18px;
+        line-height: 34px;
+        margin: 0;
+        grid-area: lotery_block__p;
+
+        .media_is_desctop({
+            margin-top: 39px;
+            max-width: 952px;
+        });
+
+        .media_is_tablet({
+            .AdaptiveFontPx(16, 18) ;
+             max-width: 460px;
+             margin-top: 25px;
+        });
+
+        .media_is_mobile({
+            font-size: 16px;
+            line-height: 32px;
+        });
+    }
+
+    &__image_priz {
+        grid-area: lotery_block__image;
+
+        .media_is_desctop({
+            align-self: center;
+            justify-self: center;
+            width: 100%;
+        });
+
+        .media_is_tablet({
+            width: 100%;
+            max-width: 460px;
+            min-width: 250px;
+            align-self: end;
+        });
+
+        .media_is_mobile({
+            margin-top: 55px;
+        });
+    }
+
+    &__form {
+        grid-area: lotery_block__form;
+
+        .media_is_desctop({
+            margin-top: 98px;
+            width: 460px;
+        });
+
+        .media_is_tablet({
+            margin-top: 98px;
+            min-width: 250px;
+        });
+
+        .media_is_mobile({
+            margin-top: 70px;
+        });
+    }
+}
+
+@container lotery_block_container (max-width: 530px) {
+    .lotery_block {
+        grid-template-areas:
+            "lotery_block__image"
+            "lotery_block__h"
+            "lotery_block__p"
+            "lotery_block__form";
+
+        &__discount_icon {
+            grid-area: initial;
+            position: absolute;
+            top: 6px;
+            left: 32px;
+        }
+
+        &__image_priz {
+            max-width: 250px;
+            justify-self: center;
+        }
+    }
+}

@@ -1,0 +1,119 @@
+@import url(./../constants.less);
+
+.by_game__inner_wrapper {
+    padding-bottom: 78px;
+    padding-top: 0px;
+    flex-basis: 100%;
+
+    .media_is_desctop({
+        padding-left: 36px;
+        padding-right: 36px;
+    });
+
+    .media_is_tablet({
+        min-width: 322px;
+    });
+}
+
+.by_game {
+    overflow: hidden;
+    color: white;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    flex-direction: row;
+
+    .media_is_mobile({
+        flex-direction: column;
+    });
+
+    & .blue_text {
+        font-size: 24px;
+
+        .media_is_tablet({
+            .AdaptiveFontPx(20,24);
+        });
+
+        .media_is_mobile({
+            font-size: 20px;
+        });
+    }
+
+    &__bacground {
+        pointer-events: none;
+        object-fit: cover;
+
+        .media_is_desctop({
+            min-width: 100px;
+            max-width: 994px;
+            flex-basis: 100%;
+        });
+
+        .media_is_tablet({
+            min-width: 0px;
+            max-width: 332px;
+        });
+    }
+
+    &__info {
+        max-width: 624px;
+    }
+
+    &__h {
+        margin: 0;
+        font-family: Archangelsk;
+        font-size: 62px;
+        margin-top: 70px;
+        font-weight: 400;
+
+        .media_is_tablet({
+            .AdaptiveFontPx(30,62);
+        });
+
+        .media_is_mobile({
+            margin-top: 40px;
+            font-size: 30px;
+        });
+    }
+
+    &__complects {
+        margin: 0;
+        margin-top: 15px;
+
+        .media_is_mobile({
+            margin-top: 20px;
+        });
+    }
+
+    &__complect_name {
+        margin: 0;
+        margin-top: 25px;
+    }
+
+    &__select_platform {
+        margin: 0;
+        margin-top: 70px;
+
+        .media_is_mobile({
+            margin-top: 40px;
+        });
+    }
+
+    &__platforms {
+        margin: 0;
+        margin-top: 25px;
+        padding: 0;
+        display: flex;
+        row-gap: 48px;
+        flex-wrap: wrap;
+        max-width: 319px;
+        align-items: center;
+    }
+
+    &__platform {
+        flex-basis: 50%;
+        list-style-type: none;
+    }
+}
