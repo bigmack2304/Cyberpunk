@@ -15,7 +15,7 @@ import { animate_slides } from "../my_libs/animation_slides";
 import { safeQuerySelector } from "../my_libs/safe_querySelector";
 import "../my_libs/lottery_form";
 import "../my_libs/aria_hidden_upd";
-import { media_is_mobile } from "../my_libs/media_querys";
+import { media_is_mobile, is_touch_enabled, media_is_tablet } from "../my_libs/media_querys";
 
 let slides_block = safeQuerySelector<HTMLDivElement>(document, ".js-animation_slides");
 
@@ -50,7 +50,8 @@ const animate_elements = [
 load_smooth_appearance();
 
 async function load_smooth_appearance() {
-    if (media_is_mobile()) return; // на мобильном устройстве такой функционал не нужен
+    debugger;
+    if ((media_is_mobile() || media_is_tablet()) && is_touch_enabled()) return; // на мобильном устройстве такой функционал не нужен
 
     let { main } = await import("../my_libs/smooth_appearance");
     main(animate_elements);

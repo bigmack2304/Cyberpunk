@@ -15,4 +15,8 @@ function media_is_mobile() {
     return media_query.matches;
 }
 
-export { media_is_desctop, media_is_tablet, media_is_mobile };
+function is_touch_enabled() {
+    return navigator.maxTouchPoints > 0;
+}
+
+export { media_is_desctop, media_is_tablet, media_is_mobile, is_touch_enabled };
