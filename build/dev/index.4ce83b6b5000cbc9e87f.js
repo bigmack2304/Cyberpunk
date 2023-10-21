@@ -322,6 +322,7 @@ function close_file() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "is_touch_enabled": function() { return /* binding */ is_touch_enabled; },
 /* harmony export */   "media_is_desctop": function() { return /* binding */ media_is_desctop; },
 /* harmony export */   "media_is_mobile": function() { return /* binding */ media_is_mobile; },
 /* harmony export */   "media_is_tablet": function() { return /* binding */ media_is_tablet; }
@@ -339,6 +340,10 @@ function media_is_tablet() {
 function media_is_mobile() {
   var media_query = window.matchMedia("(min-width: 1px) and (max-width: 320px)");
   return media_query.matches;
+}
+
+function is_touch_enabled() {
+  return navigator.maxTouchPoints > 0;
 }
 
 
@@ -593,7 +598,8 @@ function load_smooth_appearance() {
     return __generator(this, function (_a) {
       switch (_a.label) {
         case 0:
-          if ((0,_my_libs_media_querys__WEBPACK_IMPORTED_MODULE_6__.media_is_mobile)()) return [2];
+          debugger;
+          if (((0,_my_libs_media_querys__WEBPACK_IMPORTED_MODULE_6__.media_is_mobile)() || (0,_my_libs_media_querys__WEBPACK_IMPORTED_MODULE_6__.media_is_tablet)()) && (0,_my_libs_media_querys__WEBPACK_IMPORTED_MODULE_6__.is_touch_enabled)()) return [2];
           return [4, __webpack_require__.e(/*! import() */ "ts_my_libs_smooth_appearance_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../my_libs/smooth_appearance */ "./ts/my_libs/smooth_appearance.ts"))];
 
         case 1:
@@ -649,4 +655,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = (__webpack_exec__("./ts/pages_scripts/index.ts"), __webpack_exec__("./ts/my_libs/dev_sticker.ts"));
 /******/ }
 ]);
-//# sourceMappingURL=index.88b48058ee2b714552e7.js.map
+//# sourceMappingURL=index.4ce83b6b5000cbc9e87f.js.map
