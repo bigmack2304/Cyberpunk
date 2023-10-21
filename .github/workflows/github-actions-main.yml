@@ -23,8 +23,8 @@ jobs:
       - name: Build
         run: npm run build_final
 
-      # - name: Create folder 
-      #   run: 'mkdir --parents build/final'
+      - name: Create folder 
+        run: 'mkdir --parents build/final'
 
       - name: Create Artifacts 
         uses: actions/upload-artifact@v1

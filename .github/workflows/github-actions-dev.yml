@@ -23,8 +23,8 @@ jobs:
       - name: Build
         run: npm run build_dev
 
-      # - name: Create folder 
-        # run: 'mkdir --parents build/dev'
+      - name: Create folder 
+        run: 'mkdir --parents build/dev'
 
       - name: Create dev Artifacts 
         uses: actions/upload-artifact@v1
