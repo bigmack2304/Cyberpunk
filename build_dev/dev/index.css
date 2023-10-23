@@ -432,12 +432,12 @@ body {
 /* ползунок скроллбара */
 ::-webkit-scrollbar-thumb {
   background-color: #f8f200;
-  -webkit-box-shadow: 2px 0px 3px inset #000000;
-          box-shadow: 2px 0px 3px inset #000000;
+  -webkit-box-shadow: 2px 0px 0px inset #000000;
+          box-shadow: 2px 0px 0px inset #000000;
 }
 ::-webkit-scrollbar-thumb:hover {
-  -webkit-box-shadow: 2px 0px 3px inset #000000;
-          box-shadow: 2px 0px 3px inset #000000;
+  -webkit-box-shadow: 2px 0px 0px inset #000000;
+          box-shadow: 2px 0px 0px inset #000000;
 }
 .custom_ul {
   margin: 0;
