@@ -363,11 +363,11 @@ template {
   \****************************************************************************************************************************************************************************************************************************************/
 @font-face {
   font-family: "Archangelsk";
-  src: url(a924389f7740634a5c27.ttf);
+  src: url(dffd6dfcee7301d4b805.woff2);
 }
 @font-face {
   font-family: "Roboto";
-  src: url(33c6cdbc694881567da1.ttf);
+  src: url(e3e417e976e3ef82a62f.woff2);
 }
 picture {
   display: contents;
@@ -1307,7 +1307,7 @@ body {
 [class*="noise_wrapper--top"]::before {
   content: "";
   display: block;
-  background-image: url(110c5545e567cf9320b2.png);
+  background-image: url(f88deb97fa10ec3f0398.png);
   width: 100%;
   height: 70px;
   will-change: transform;
@@ -1319,7 +1319,7 @@ body {
 [class*="noise_wrapper--bottom"]::after {
   content: "";
   display: block;
-  background-image: url(110c5545e567cf9320b2.png);
+  background-image: url(f88deb97fa10ec3f0398.png);
   width: 100%;
   height: 70px;
   will-change: transform;
