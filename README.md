@@ -41,3 +41,4 @@
 -   Java Script
 -   Type Script
 -   WebPack
+-   Figma
