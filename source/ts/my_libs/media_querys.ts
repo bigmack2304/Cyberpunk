@@ -15,8 +15,13 @@ function media_is_mobile() {
     return media_query.matches;
 }
 
+function media_is_maxPX(valuePX: number) {
+    const media_query = window.matchMedia(`(max-width: ${valuePX}px)`);
+    return media_query.matches;
+}
+
 function is_touch_enabled() {
     return navigator.maxTouchPoints > 0;
 }
 
-export { media_is_desctop, media_is_tablet, media_is_mobile, is_touch_enabled };
+export { media_is_desctop, media_is_tablet, media_is_mobile, is_touch_enabled, media_is_maxPX };
