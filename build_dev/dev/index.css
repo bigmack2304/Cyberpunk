@@ -2066,6 +2066,34 @@ body {
     }
   }
 }
+.context_menu_form_img {
+  display: block;
+  position: fixed;
+  background-color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 1px #515151 solid;
+  min-width: 150px;
+  max-width: 250px;
+  padding: 5px 0px 5px 0px;
+}
+.context_menu_form_img__items {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.context_menu_form_img__item_del {
+  cursor: pointer;
+  padding: 0 2px 0 10px;
+  overflow: hidden;
+  text-wrap: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+.context_menu_form_img__item_del:hover {
+  background-color: #cacaca;
+}
 
 /*!********************************************************************************************************************************************************************************************************************************************!*\
   !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!../node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./styles/less/components/dev_mode_sticker.less ***!

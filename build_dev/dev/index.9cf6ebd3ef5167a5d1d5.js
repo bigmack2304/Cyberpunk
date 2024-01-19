@@ -1,6 +1,37 @@
 "use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["index"],{
 
+/***/ "./ts/componentTemplates/contextMenuFormImg.ts":
+/*!*****************************************************!*\
+  !*** ./ts/componentTemplates/contextMenuFormImg.ts ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _my_libs_create_dom_node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../my_libs/create_dom_node */ "./ts/my_libs/create_dom_node.ts");
+/* harmony import */ var _my_libs_safe_querySelector__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../my_libs/safe_querySelector */ "./ts/my_libs/safe_querySelector.ts");
+
+
+
+function component(_a) {
+  var _b = _a === void 0 ? {} : _a,
+      del_callback = _b.del_callback;
+
+  var node_xml = "\n        <div class=\"context_menu_form_img\">\n            <ul class=\"context_menu_form_img__items\">\n                <li class=\"context_menu_form_img__item_del\">\u0423\u0434\u0430\u043B\u0438\u0442\u044C</li>\n            </ul>\n        </div>";
+  var node_component = (0,_my_libs_create_dom_node__WEBPACK_IMPORTED_MODULE_0__.dom_parser)(node_xml).children[0];
+
+  if (del_callback) {
+    var li_del = (0,_my_libs_safe_querySelector__WEBPACK_IMPORTED_MODULE_1__.safeQuerySelector)(node_component, ".context_menu_form_img__item_del");
+    li_del.onclick = del_callback;
+  }
+
+  return node_component;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (component);
+
+/***/ }),
+
 /***/ "./ts/my_libs/animation_slides.ts":
 /*!****************************************!*\
   !*** ./ts/my_libs/animation_slides.ts ***!
@@ -142,6 +173,27 @@ function main() {
 
 /***/ }),
 
+/***/ "./ts/my_libs/create_dom_node.ts":
+/*!***************************************!*\
+  !*** ./ts/my_libs/create_dom_node.ts ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "dom_parser": function() { return /* binding */ dom_parser; }
+/* harmony export */ });
+function dom_parser(xmlString) {
+  var placeholder = document.createElement("div");
+  placeholder.innerHTML = xmlString;
+  var node = placeholder;
+  return node;
+}
+
+
+
+/***/ }),
+
 /***/ "./ts/my_libs/decorators.ts":
 /*!**********************************!*\
   !*** ./ts/my_libs/decorators.ts ***!
@@ -267,15 +319,21 @@ function onLoad(e) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _safe_querySelector__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./safe_querySelector */ "./ts/my_libs/safe_querySelector.ts");
+/* harmony import */ var _componentTemplates_contextMenuFormImg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../componentTemplates/contextMenuFormImg */ "./ts/componentTemplates/contextMenuFormImg.ts");
+/* harmony import */ var _util_functions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./util_functions */ "./ts/my_libs/util_functions.ts");
+
+
 
 var lotery_form = (0,_safe_querySelector__WEBPACK_IMPORTED_MODULE_0__.safeQuerySelector)(document, ".js-letery_form");
 var url_to_image = "";
 lotery_form.addEventListener("submit", on_submit);
-(0,_safe_querySelector__WEBPACK_IMPORTED_MODULE_0__.safeQuerySelector)(lotery_form, ".letery_form__file").addEventListener("change", on_change);
+var file_input = (0,_safe_querySelector__WEBPACK_IMPORTED_MODULE_0__.safeQuerySelector)(lotery_form, ".letery_form__file");
+file_input.addEventListener("change", on_change);
 
 function on_submit(e) {
+  var formData = new FormData(e.target);
   e.preventDefault();
-  alert("Форма отправлена!");
+  alert("\u0424\u043E\u0440\u043C\u0430 \u043E\u0442\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0430! (\u0438\u043C\u044F: ".concat(formData.get("name"), ", email: ").concat(formData.get("email"), ")"));
 }
 
 function on_change(e) {
@@ -300,6 +358,61 @@ function on_change(e) {
 
 var file_attach_text = (0,_safe_querySelector__WEBPACK_IMPORTED_MODULE_0__.safeQuerySelector)(lotery_form, ".letery_form__file_attach_text");
 var file_previev = (0,_safe_querySelector__WEBPACK_IMPORTED_MODULE_0__.safeQuerySelector)(lotery_form, ".letery_form__file_previev");
+file_previev.addEventListener("contextmenu", on_context_menu);
+var contextMenu = undefined;
+
+function is_visible_remove() {
+  if (contextMenu) {
+    remove_contextMenu();
+  }
+}
+
+function on_scroll_remove() {
+  is_visible_remove();
+  remove_contextMenu_listeners();
+}
+
+function on_click_remove(e) {
+  if (e.target !== contextMenu) {
+    is_visible_remove();
+    remove_contextMenu_listeners();
+  }
+}
+
+function contevt_menu_viev_control() {
+  window.addEventListener("scroll", on_scroll_remove);
+  document.addEventListener("click", on_click_remove);
+}
+
+function remove_contextMenu_listeners() {
+  window.removeEventListener("scroll", on_scroll_remove);
+  document.removeEventListener("click", on_click_remove);
+}
+
+function on_context_menu(e) {
+  e.stopPropagation();
+  e.preventDefault();
+
+  function on_delete(e) {
+    remove_contextMenu();
+    close_file();
+  }
+
+  if (contextMenu) {
+    remove_contextMenu();
+  }
+
+  contextMenu = (0,_componentTemplates_contextMenuFormImg__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    del_callback: on_delete
+  });
+  lotery_form.insertAdjacentElement("afterend", contextMenu);
+  var pos = _util_functions__WEBPACK_IMPORTED_MODULE_2__.get_cursor_position.bind(contextMenu)(e);
+  Object.assign(contextMenu.style, {
+    top: "".concat(pos.y, "px"),
+    left: "".concat(pos.x, "px")
+  });
+  contevt_menu_viev_control();
+}
 
 function show_file(url) {
   file_attach_text.hidden = true;
@@ -310,6 +423,16 @@ function show_file(url) {
 function close_file() {
   file_attach_text.hidden = false;
   file_previev.hidden = true;
+  file_previev.removeAttribute("src");
+  file_input.value = "";
+}
+
+function remove_contextMenu() {
+  if (contextMenu) {
+    contextMenu.remove();
+    contextMenu = undefined;
+    remove_contextMenu_listeners();
+  }
 }
 
 /***/ }),
@@ -385,6 +508,30 @@ function safeQuerySelectorAll(target, selector) {
   }
 
   return result;
+}
+
+
+
+/***/ }),
+
+/***/ "./ts/my_libs/util_functions.ts":
+/*!**************************************!*\
+  !*** ./ts/my_libs/util_functions.ts ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "get_cursor_position": function() { return /* binding */ get_cursor_position; }
+/* harmony export */ });
+function get_cursor_position(evt) {
+  var target = this.getBoundingClientRect();
+  var x = evt.clientX - target.left;
+  var y = evt.clientY - target.top;
+  return {
+    x: x,
+    y: y
+  };
 }
 
 
@@ -661,4 +808,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = (__webpack_exec__("./ts/pages_scripts/index.ts"), __webpack_exec__("./ts/my_libs/dev_sticker.ts"));
 /******/ }
 ]);
-//# sourceMappingURL=index.2ed97c51078cd5eade57.js.map
+//# sourceMappingURL=index.9cf6ebd3ef5167a5d1d5.js.map
