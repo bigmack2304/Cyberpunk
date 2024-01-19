@@ -1,4 +1,11 @@
 {
+    "ts-node": {
+        "transpileOnly": true,
+        "moduleTypes": {
+            "webpack.config.ts": "cjs",
+            "webpack-config-scripts/**/*": "cjs"
+        }
+    },
     "compilerOptions": {
         "strict": true,
         "strictPropertyInitialization": false,
