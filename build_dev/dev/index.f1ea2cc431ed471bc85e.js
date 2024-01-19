@@ -526,7 +526,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 function get_cursor_position(evt) {
   var target = this.getBoundingClientRect();
-  var x = evt.clientX - target.left;
+
+  var offset = function offset() {
+    var offset = window.innerWidth - 1280;
+
+    if (offset >= 0) {
+      return Math.floor(offset / 2);
+    }
+
+    return 0;
+  };
+
+  var x = evt.clientX - target.left + offset();
   var y = evt.clientY - target.top;
   return {
     x: x,
@@ -808,4 +819,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = (__webpack_exec__("./ts/pages_scripts/index.ts"), __webpack_exec__("./ts/my_libs/dev_sticker.ts"));
 /******/ }
 ]);
-//# sourceMappingURL=index.9cf6ebd3ef5167a5d1d5.js.map
+//# sourceMappingURL=index.f1ea2cc431ed471bc85e.js.map
